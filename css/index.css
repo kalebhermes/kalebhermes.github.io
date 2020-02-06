@@ -1,0 +1,24 @@
+/* Regular */
+@font-face {
+  font-family: Mentor-Sans;
+  src: url(../fonts/mentor_sans_std_regular.otf) format('opentype');
+}
+
+/* Bold */
+@font-face {
+  font-family: Mentor-Sans;
+  src: url(../fonts/mentor_sans_std_bold.otf) format('opentype');
+  font-weight: 700;
+  font-style: bold;
+}
+
+@font-face {
+	font-family: Mentor;
+	src: url(../fonts/mentor_light_italic.otf) format('opentype');
+	font-weight: 400;
+	font-style: italic;
+}
+
+.font {
+  font-family: Mentor-Sans;
+}

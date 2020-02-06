@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Magic Item Block Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<link rel="stylesheet" href="../css/index.css">
+	<script src="../js/MagicItem.js" media="all"></script>
+	<script src="../js/LevelBonusCost.js" media="all"></script>
+	<script src="../js/Property.js" media="all"></script>
+	<script src="../js/Power.js" media="all"></script>
+	<script src="../js/output.js" media="all"></script>
+	<script src="../js/input.js" media="all"></script>
+</head>
+<body onload="init()">
+    <div style="display:inline-block; width: 50%;">
+    	Name: <input id="itemName" value="Magic Item Name"><br>
+		Level Bonus: <input id="itemLevelModifier" value="0"/><br>
+		Flavor Text: <textarea id="itemFlavorText"/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis purus nec.</textarea><br>
+		<div id="levelBonusCostParent">
+			<div id="levelBonusCost">
+				<h2>Levels:</h2>
+				<br>
+				<div>
+					<div id="levelBonusCostRow-0">
+						Level: <input id="level-0" value="1"/>
+						Bonus: <input id="bonus-0" value="1"/>
+						Cost: <input id="cost-0" value="500"/><br>
+					</div>
+				</div>
+			</div>
+			<div>
+				<button onclick="addAdditionalLevelBonusCostRow()">Add additional row</button>
+				<button onclick="removeAdditionalLevelBonusCostRow()"> Remove row</button>
+			</div>
+		</div>
+		<div id="propertyParent">
+			<div id="property">
+				<h2>Properties:</h2>
+				<br>
+				<div>
+					<div id="property-0">
+						Title: <input id="propertyLabel-0" value="Armor"/>
+						Value: <input id="propertyValue-0" value="Any"/>
+					</div>
+				</div>
+			</div>
+			<div>
+				<button onclick="addAdditionalPropertyRow()">Add additional row</button>
+				<button onclick="removeAdditionalPropertyRow()">Remove row</button>
+			</div>
+		</div>
+		<div id="powerParent">
+			<div id="power">
+				<h2>Powers:</h2>
+				<br>
+				<div>
+					<div id="power-0">
+						<!-- TODO: Make this a select with -Daily, Encounter, At-Will- -->
+						Frequency: <input id="powerFrequency-0" value="Daily"/>
+						Types: <input id="powerTypes-0"/>
+						<!-- TODO: Make this a text area -->
+						Description: <textarea id="powerDescription-0">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla neque orci, eget ultricies erat gravida non. Nam scelerisque, nulla eu sollicitudin posuere, felis velit.</textarea>
+					</div>
+				</div>
+			</div>
+			<div>
+				<button onclick="addAdditionalPowerRow()">Add additional row</button>
+				<button onclick="removeAdditionalPowerRow()">Remove row</button>
+			</div>
+		</div>
+    </div>
+    <div style="display: inline-block; width:49%;">
+    	<div id='output' style='width:350px' />
+    	<!-- <div id="itemNameView"></div> -->
+    	<!-- <div id="itemLevelModifierView"></div> -->
+    	<!-- <div id="itemFlavorView"></div> -->
+    </div>
+</body>
+</html>
