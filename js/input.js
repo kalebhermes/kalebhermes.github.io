@@ -59,7 +59,7 @@ function init() {
 		update(thisMagicItem);
 	}, false);
 
-	document.getElementById('powerFrequency-0').addEventListener('keyup', function (evt) {
+	document.getElementById('powerFrequency-0').addEventListener('change', function (evt) {
 		thisPower0.setFrequency(this.value);
 		update(thisMagicItem);
 	}, false);
