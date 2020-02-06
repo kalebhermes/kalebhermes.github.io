@@ -9,6 +9,7 @@ function update(thisMagicItem) {
 	if(thisMagicItem.propertiesArray.length > 0) output += getProperties(thisMagicItem);
 	if(thisMagicItem.powerArray.length > 0) output += getPowers(thisMagicItem);
 	document.getElementById('output').innerHTML = output;
+	document.getElementById('htmlSource').value = output;
 }
 
 function getHeaderBar(thisMagicItem) {
