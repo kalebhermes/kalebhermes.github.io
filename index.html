@@ -14,114 +14,126 @@
 	<script src="js/output.js"></script>
 	<script src="js/input.js"></script>
 </head>
-<body onload="init()">
+<body onload="init()" style="padding-top:100px;">
 	<div class="container">
 		<div class="row">
-		    <div class="six columns">
+		    <div class="seven columns">
+		    	<h4>Details</h4>
 		    	<div class="row">
 		    		<div class="nine columns">
 		    			<label for="itemName">Name</label>
 		    			<input id="itemName" placeholder="Magic Item Name">
 		    		</div>
 		    		<div class="three columns">
-						<label for="itemLevelModifier">Level Bonus</label>
-						<input id="itemLevelModifier" value="0"/>
+						<label for="itemLevelModifier">Requirement</label>
+						<input id="itemLevelModifier" placeholder="0"/>
 					</div>
 				</div>
 				<div class="row">
 					<div class="twelve columns">
 						<label for="itemFlavorText">Flavor Text</label>
-						<textarea style="width:100%;" id="itemFlavorText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis purus nec.</textarea>
+						<textarea id="itemFlavorText" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis purus nec."></textarea>
 					</div>
 				</div>
-
+				<div class="row">
+					<div id="sourceParent">
+						<div id="source">
+							<div class="row">
+								<div class="twelve columns">
+									<label for="sourceInput">Source</label>
+									<input id="sourceInput" placeholder="Adventurer's Vault pg 127"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h4>Levels</h4>
 				<div id="levelBonusCostParent">
-					<h2>Levels:</h2>
 					<div id="levelBonusCost">
 						<div class="row">
 							<div id="levelBonusCostRow-0">
 								<div class="two columns">
 									<label for="level-0">Level</label>
-									<input id="level-0" value="1"/>
+									<input id="level-0" placeholder="1"/>
 								</div>
 								<div class="two columns">
 									<label for="bonus-0">Bonus</label>
-									<input id="bonus-0" value="1"/>
+									<input id="bonus-0" placeholder="1"/>
 								</div>
 								<div class="eight columns">
 									<label for="cost-0">Cost</label>
-									<input id="cost-0" value="500"/>
+									<input id="cost-0" placeholder="500"/>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="twelve columns">
-							<button onclick="addAdditionalLevelBonusCostRow()">Add additional row</button>
-							<button onclick="removeAdditionalLevelBonusCostRow()"> Remove row</button>
+							<button onclick="addAdditionalLevelBonusCostRow()">+</button>
+							<button onclick="removeAdditionalLevelBonusCostRow()">-</button>
 						</div>
 					</div>
 				</div>
 				<div id="propertyParent">
-					<h2>Properties:</h2>
+					<h4>Properties</h4>
 					<div id="property">
 						<div class="row">
 							<div id="property-0">
 								<div class="six columns"> 
 									<label for="propertyLabel-0">Label</label>
-									<input id="propertyLabel-0" value="Armor"/>
+									<input id="propertyLabel-0" placeholder="Armor"/>
 								</div>
 								<div class="six columns">
 									<label for="propertyValue-0">Value</label>
-									<input id="propertyValue-0" value="Any"/>
+									<input id="propertyValue-0" placeholder="Any"/>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div>
-						<button onclick="addAdditionalPropertyRow()">Add additional row</button>
-						<button onclick="removeAdditionalPropertyRow()">Remove row</button>
+						<button onclick="addAdditionalPropertyRow()">+</button>
+						<button onclick="removeAdditionalPropertyRow()">-</button>
 					</div>
 				</div>
 				<div id="powerParent">
-					<h2>Powers:</h2>
+					<h4>Powers</h4>
 					<div id="power">
 						<div class="row">
 							<div id="power-0">
 								<div>
 									<div class="three columns">
-										<label for="powerFrequency-0">Frequency</label>
-										<select id="powerFrequency-0">
-											<option value="Daily">Daily</option>
-											<option value="Encounter">Encounter</option>
-											<option value="At-Will">At-Will</option>
-										</select>
-									</div>
-									<div class="three columns">
-										<label for="powerTypes-0">Types</label>
-										<input id="powerTypes-0"/>
+										<row>
+											<label for="powerFrequency-0">Frequency</label>
+											<select id="powerFrequency-0">
+												<option value="Daily">Daily</option>
+												<option value="Encounter">Encounter</option>
+												<option value="At-Will">At-Will</option>
+											</select>
+										</row>
+										<row>
+											<label for="powerTypes-0">Types</label>
+											<input id="powerTypes-0"/>
+										</row>
 									</div>
 								</div>
-
-								<div class="six columns">
+								<div class="nine columns">
 									<label for="powerDescription-0">Description</label>
-									<textarea id="powerDescription-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla neque orci, eget ultricies erat gravida non. Nam scelerisque, nulla eu sollicitudin posuere, felis velit.</textarea>
+									<textarea id="powerDescription-0" style="height:77px;" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla neque orci, eget ultricies erat gravida non. Nam scelerisque, nulla eu sollicitudin posuere, felis velit."></textarea>
 								</div>
-
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="twelve columns">
-							<button onclick="addAdditionalPowerRow()">Add additional row</button>
-							<button onclick="removeAdditionalPowerRow()">Remove row</button>
+							<button onclick="addAdditionalPowerRow()">+</button>
+							<button onclick="removeAdditionalPowerRow()">-</button>
 						</div>
 					</div>
 				</div>
 		    </div>
-		    <div class="six columns">
-		    	<div id="output" style="width:350px"></div>	
-		    	<textarea id="htmlSource"></textarea>
+		    <div class="five columns">
+		    	<div id="output" style="width:375px"></div>
+		    	<textarea id="htmlSource" style="width:375px;height:350px;margin-top:5px;"></textarea>
 		    </div>
 		</div>
 	</div>
