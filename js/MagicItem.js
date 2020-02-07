@@ -1,12 +1,13 @@
 class MagicItem {
 
-	constructor(name, levelModifier, flavorText, levelBonusCostArray, propertiesArray, powerArray){
+	constructor(name, levelModifier, flavorText, levelBonusCostArray, propertiesArray, powerArray, source){
 		this.name = name;
 		this.levelModifier = levelModifier;
 		this.flavorText = flavorText;
 		this.levelBonusCostArray = levelBonusCostArray;
 		this.propertiesArray = propertiesArray;
 		this.powerArray = powerArray;
+		this.source = source;
 	}
 
 	setName(name) {
@@ -31,5 +32,9 @@ class MagicItem {
 
 	setPowerArray(powerArray) {
 		this.powerArray = powerArray;
+	}
+
+	setSource(source) {
+		this.source = source;
 	}
 }
