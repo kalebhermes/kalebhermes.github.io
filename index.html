@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Magic Item Block Generator</title>
+    <title>Excalibrae</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/skeleton.css">
@@ -14,8 +14,11 @@
 	<script src="js/output.js"></script>
 	<script src="js/input.js"></script>
 </head>
-<body onload="init()" style="padding-top:100px;">
+<body onload="init()">
 	<div class="container">
+		<div class="row">
+			<h1 class="font">Excalibrae<h1>
+		</div>
 		<div class="row">
 		    <div class="seven columns">
 		    	<h4>Details</h4>
@@ -133,6 +136,11 @@
 		    </div>
 		    <div class="five columns">
 		    	<div id="output" style="width:375px"></div>
+		    	<div>
+		    		<button onclick="switchToHTML(thisMagicItem)">HTML</button>
+		    		<button onclick="switchToJSON(thisMagicItem)">JSON</button>
+		    		<button onclick="importFromJSON()">Import</button>
+		    	</div>
 		    	<textarea id="htmlSource" style="width:375px;height:350px;margin-top:5px;"></textarea>
 		    </div>
 		</div>

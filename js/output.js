@@ -1,6 +1,13 @@
 var parentStart = '<div style="width:375px;">';
 var parentEnd = '</div>';
 
+const outputMethods = {
+	HTML: 'html',
+	JSON: 'json'
+}
+
+let outputMethod = outputMethods.HTML;
+
 function update(thisMagicItem) {
 	var output = parentStart;
 	output += getHeaderBar(thisMagicItem);
@@ -11,7 +18,12 @@ function update(thisMagicItem) {
 	if(thisMagicItem.source != undefined) output += getSource(thisMagicItem);
 	output += parentEnd;
 	document.getElementById('output').innerHTML = output;
-	document.getElementById('htmlSource').value = output;
+	if(outputMethod == outputMethods.HTML) document.getElementById('htmlSource').value = output;
+	else {
+		var jsonString = JSON.stringify(thisMagicItem);
+		document.getElementById('htmlSource').value = jsonString;
+	}
+	
 }
 
 function getHeaderBar(thisMagicItem) {
@@ -95,4 +107,14 @@ function getSource(thisMagicItem) {
 	var template = '<div style="font-size: 12px;color: rgb(0, 0, 0, .75);font-style: italic;font-family: Mentor;margin: -5px 0px 5px 0px;letter-spacing: .25px;">' + (thisMagicItem.source || '') + '</div>';
 
 	return template;
+}
+
+function switchToJSON(thisMagicItem) {
+	outputMethod = outputMethods.JSON;
+	update(thisMagicItem);
+}
+
+function switchToHTML(thisMagicItem) {
+	outputMethod = outputMethods.HTML;
+	update(thisMagicItem);
 }

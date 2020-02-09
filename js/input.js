@@ -5,7 +5,7 @@ var thisPower0 = new Power('Daily', undefined, 'Lorem ipsum dolor sit amet, cons
 var thisLevelBonusCostArray = [thislevelBonusCost0];
 var thisPropertyArray = [thisProperty0];
 var thisPowerArray = [thisPower0];
-// TODO: Can probably check in eventListener if thisMagicItem.levelBonusCostArray.length < 0, and only add then or something
+
 thisMagicItem.setLevelBonusCostArray(thisLevelBonusCostArray);
 thisMagicItem.setPropertiesArray(thisPropertyArray);
 thisMagicItem.setPowerArray(thisPowerArray);
@@ -197,6 +197,75 @@ function removeAdditionalPowerRow() {
 	update(thisMagicItem);
 }
 
+// This method is a nightmare. 
+// A better implementation would likely be to rewrite the methds that create new rows
+// to destroy and create all children when a new one is added. This would allow 
+// for calling destroyAndCreateRows(currentRows+1) in the normal add calls
+// but would also allow for destoryAndCreateRows(thisMagicItem.levelBonusCostArray.length)
+function importFromJSON() {
+
+	var jsonString = document.getElementById('htmlSource').value;
+	outputMethod = outputMethods.JSON;
+
+	try{
+		var json = JSON.parse(jsonString);
+		thisMagicItem = new MagicItem(json.name, json.levelModifier, json.flavorText, json.levelBonusCostArray, json.propertiesArray, json.powerArray, json.source);
+
+		document.getElementById('itemName').value = (thisMagicItem.name || '');
+		document.getElementById('itemLevelModifier').value = (thisMagicItem.levelModifier || '');
+		document.getElementById('itemFlavorText').value = (thisMagicItem.flavorText || '');
+		document.getElementById('sourceInput').value = (thisMagicItem.source || '');
+		
+		// Level Bonus Cost
+		if(numberOfLevelBonusCostRows != thisMagicItem.levelBonusCostArray.length){
+			for(; numberOfLevelBonusCostRows < thisMagicItem.levelBonusCostArray.length-1;){
+				addAdditionalLevelBonusCostRow();
+			}
+			
+		}
+		numberOfLevelBonusCostRows = thisMagicItem.levelBonusCostArray.length - 1;
+		for(var x = 0; x < numberOfLevelBonusCostRows+1; x++){
+			// Update each row with values
+			document.getElementById('level-' + x).value = (thisMagicItem.levelBonusCostArray[x].level || '');
+			document.getElementById('bonus-' + x).value = (thisMagicItem.levelBonusCostArray[x].bonus || '');
+			document.getElementById('cost-' + x).value = (thisMagicItem.levelBonusCostArray[x].cost || '');
+		}
+		thisLevelBonusCostArray = thisMagicItem.levelBonusCostArray;
+
+		// Properties
+		if(numberOfPropertyRows != thisMagicItem.propertiesArray.length){
+			for(; numberOfPropertyRows < thisMagicItem.propertiesArray.length-1;){
+				addAdditionalPropertyRow();
+			}
+		}
+		numberOfPropertyRows = thisMagicItem.propertiesArray.length - 1;
+		for(var x = 0; x < numberOfPropertyRows+1; x++){
+			document.getElementById('propertyLabel-' + x).value = (thisMagicItem.propertiesArray[x].label || '');
+			document.getElementById('propertyValue-' + x).value = (thisMagicItem.propertiesArray[x].value || '');
+		}
+		thisPropertyArray = thisMagicItem.propertiesArray;
 
 
-
+		// Powers
+		if(numberOfPowerRows != thisMagicItem.powerArray.length){
+			for(; numberOfPowerRows < thisMagicItem.powerArray.length-1;){
+				addAdditionalPowerRow();
+			}	
+		}
+		numberOfPowerRows = thisMagicItem.powerArray.length - 1;
+		for(var x = 0; x < numberOfPowerRows+1; x++){
+			document.getElementById('powerFrequency-' + x).value = (thisMagicItem.powerArray[x].frequency || '');
+			document.getElementById('powerTypes-' + x).value = (thisMagicItem.powerArray[x].types || '');
+			document.getElementById('powerDescription-' + x).innerHTML = (thisMagicItem.powerArray[x].description || '');
+		}
+		thisPowerArray = thisMagicItem.powerArray;
+		
+		update(thisMagicItem);
+	} catch(error) {
+		// TODO: Find a clean way to present this error? Maybe a toast? That's more JS, but seems easiest. 
+		//  Could also maybe store the JSON value entered, change the value to to the error, then change
+		//  back on click in? Or add a temp div over top of the text area with the error with a dismiss
+		//  on click.
+		console.log(error);
+	}
+}
