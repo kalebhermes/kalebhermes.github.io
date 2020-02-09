@@ -13,6 +13,7 @@
 	<script src="js/Power.js"></script>
 	<script src="js/output.js"></script>
 	<script src="js/input.js"></script>
+	<script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.10.3/js/lib/beautify-html.js"></script>
 </head>
 <body onload="init()">
 	<div class="container">
@@ -20,7 +21,7 @@
 			<h1 class="font">Excalibrae<h1>
 		</div>
 		<div class="row">
-		    <div class="seven columns">
+		    <div class="six columns">
 		    	<h4>Details</h4>
 		    	<div class="row">
 		    		<div class="nine columns">
@@ -134,14 +135,14 @@
 					</div>
 				</div>
 		    </div>
-		    <div class="five columns">
+		    <div class="six columns">
 		    	<div id="output" style="width:375px"></div>
 		    	<div>
 		    		<button onclick="switchToHTML(thisMagicItem)">HTML</button>
 		    		<button onclick="switchToJSON(thisMagicItem)">JSON</button>
 		    		<button onclick="importFromJSON()">Import</button>
 		    	</div>
-		    	<textarea id="htmlSource" style="width:375px;height:350px;margin-top:5px;"></textarea>
+		    	<textarea id="htmlSource" style="width:375px;height:350px;margin-top:5px;white-space:nowrap;"></textarea>
 		    </div>
 		</div>
 	</div>
