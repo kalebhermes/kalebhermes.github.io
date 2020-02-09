@@ -18,9 +18,10 @@ function update(thisMagicItem) {
 	if(thisMagicItem.source != undefined) output += getSource(thisMagicItem);
 	output += parentEnd;
 	document.getElementById('output').innerHTML = output;
-	if(outputMethod == outputMethods.HTML) document.getElementById('htmlSource').value = output;
+	const beautified = html_beautify(output);
+	if(outputMethod == outputMethods.HTML) document.getElementById('htmlSource').value = beautified;
 	else {
-		var jsonString = JSON.stringify(thisMagicItem);
+		var jsonString = JSON.stringify(thisMagicItem, null, 4);
 		document.getElementById('htmlSource').value = jsonString;
 	}
 	
